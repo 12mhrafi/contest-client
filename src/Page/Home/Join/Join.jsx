@@ -11,8 +11,8 @@ const Join = () => {
           <h2 className="text-3xl font-semibold">Never miss a battle!</h2>
           <p className="my-5">
             {" "}
-            Subscribe to the Writing Battle monthly newsletter. We highlight
-            discussions, writers, and short stories from our community and let
+            Subscribe to the contest Battle monthly newsletter. We highlight
+            discussions, contestant, from our community and let
             you know when a battle is imminent. Emails are never shared with a
             third party.
           </p>
