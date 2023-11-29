@@ -24,6 +24,7 @@ Here are core features of this website -
 - After successfully completed payment user will participate any contest within deadline.
 - Also everybody can see total contests, prizes, on leaderboard. 
 - if a creator want to add a contest need to approval from the admin otherwise will be pending.
+- User can be promoted to the admin by a admin.
 - after approved a contest can't be deleted and edited by a contest creator.
 - user can see total win and loss contest and  can also able to see their paritcipation wining percentage on Dashboard with piechart.
 - Contest creator also can declare win to the most qualified contestant etc.
