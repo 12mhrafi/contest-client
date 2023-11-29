@@ -26,15 +26,15 @@ const AllContestCategory = ({ items }) => {
             </div>
             <div className="flex mt-6 p-4 flex-col gap-2">
               <h2 className="text-2xl font-semibold">{item.contestName}</h2>
-              <p className="text-violet-700">{item.contestTypes}</p>
+              <p className="text-gray-600">{item.contestTypes}</p>
               <p>{item.description}</p>
             </div>
             <hr className="mt-4" />
 
             <div className=" flex p-4 justify-between py-3 ">
-              <h2>Participants: {item.participants}</h2>
+              <h2 className="text-gray-500">Participants: {item.participants}</h2>
               <div>
-                <h2>Prize: ${item.priceMoney} </h2>
+                <h2 className="text-gray-500">Prize: ${item.priceMoney} </h2>
               </div>
             </div>
             <div className="p-4">

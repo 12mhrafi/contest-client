@@ -13,7 +13,7 @@ const NavBar = () => {
   };
 
   const navLinks = (
-    <div className="flex md:flex-row gap-5 text-[17px] text-black  flex-col">
+    <div className="flex md:flex-row gap-5  text-[17px] text-black  flex-col">
       <NavLink
         to="/"
         className={({ isActive, isPending }) =>
@@ -151,8 +151,8 @@ const NavBar = () => {
           </Dropdown>
           <Navbar.Toggle />
         </div>
-        <Navbar.Collapse>
-          <Navbar.Link href="#" active>
+        <Navbar.Collapse >
+          <Navbar.Link className="bg-gray-300" href="#" active>
             {navLinks}
           </Navbar.Link>
         </Navbar.Collapse>
