@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import useContest from "../../hooks/useContest";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const AddedContest = () => {
   const axiosPublic = useAxiosPublic();
@@ -29,23 +30,34 @@ const AddedContest = () => {
       toast.success("approve contest you can't delete")
       return;
     }
-    axiosSecure.delete(`/contests/admin/${id}`).then((res) => {
-      toast.success("deleted");
-      console.log(id)
-    });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+        axiosSecure.delete(`/contests/admin/${id}`).then((res) => {
+          toast.success("deleted");
+          console.log(id)
+        });
+      }
+    })
+ 
   };
 
 
-  // const handleEdit = (id) => {
-    
-  //   axiosSecure.put(`/contests/admin/${id}`).then((res) => {
-  //     toast.success("deleted");
-  //     console.log(id)
-  //   });
-  // };
-  // }
-
-  // console.log(contests);
+  const hadleUpdate = () => {
+    toast.success("Approved post you can't edit!")
+  }
 
   return (
     <div className="overflow-x-auto container mx-auto">
@@ -87,14 +99,18 @@ const AddedContest = () => {
                 </Button>
               </Table.Cell>
               <Table.Cell>
-                  <Link to={`/dashboard/updateContest/${item._id}`}>
-                  <Button
-                  
-                  color="success"
-                  className=""
-                >
-                  Edit
-                </Button></Link>
+                  {
+                    item.status === "approved" ? <div onClick={hadleUpdate}><Button>Edit</Button></div>
+                    :
+                    <Link to={`/dashboard/updateContest/${item._id}`}>
+                    <Button
+                    
+                    color="success"
+                    className=""
+                  >
+                    Edit
+                  </Button></Link>
+                  }
               </Table.Cell>
               <Table.Cell>
                 <Link to="/dashboard/submittedContest">

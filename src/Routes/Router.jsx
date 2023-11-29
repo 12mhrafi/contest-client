@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         },
         {
           path:"/viewDetails/:id",
-          loader: ({params}) => fetch(`https://contest-server.vercel.app/contests/details/${params.id}`),
+          loader: ({params}) => fetch(`http://localhost:5000/contests/details/${params.id}`),
           element:<ViewDeatails></ViewDeatails>
         },
         {
@@ -59,12 +59,12 @@ const router = createBrowserRouter([
         },
         {
           path:"/contestDetail/:id",
-          loader: ({params}) => fetch(`https://contest-server.vercel.app/contests/details/${params.id}`),
+          loader: ({params}) => fetch(`http://localhost:5000/contests/details/${params.id}`),
           element:<PrivateRoute><ContestDetail></ContestDetail></PrivateRoute>
         },
         {
           path:"/payment/:id",
-          loader: ({params}) => fetch(`https://contest-server.vercel.app/contests/details/${params.id}`),
+          loader: ({params}) => fetch(`http://localhost:5000/contests/details/${params.id}`),
           element:<Payment></Payment>
         },
         {
@@ -106,7 +106,7 @@ const router = createBrowserRouter([
     },
     {
       path: "/dashboard/updateContest/:id",
-      loader:({params}) => fetch(`https://contest-server.vercel.app/contests/details/${params.id}`),
+      loader:({params}) => fetch(`http://localhost:5000/contests/details/${params.id}`),
       element:<UserUpdate></UserUpdate>
     },
 

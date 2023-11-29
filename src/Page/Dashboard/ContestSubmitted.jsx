@@ -3,13 +3,14 @@ import { useQuery } from "@tanstack/react-query";
 import { Button, Table } from "flowbite-react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 const ContestSubmitted = () => {
   const axiosSecure = useAxiosSecure();
   const { data: contestInfo = [], refetch } = useQuery({
     queryKey: ["registeredData"],
     queryFn: async () => {
       const result = await axiosSecure.get(
-        "https://contest-server.vercel.app/registerdContests"
+        "http://localhost:5000/registerdContests"
       );
 
       return result?.data;
@@ -17,19 +18,38 @@ const ContestSubmitted = () => {
   });
 
   const handleWinner = (id,status) => {
-    axiosSecure.patch(`/payment/${id}`).then((res) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes '
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Done!',
+          'Winner declared.',
+          'success'
+        )
+        axiosSecure.patch(`/payment/${id}`).then((res) => {
    
-         if(status==="won"){
-          console.log(res.status)
-         return toast.success("Already Declared!")
+          if(status==="won"){
+           console.log(res.status)
+          return toast.success("Already Declared!")
+       }
+       if (res) {
+        //  console.log(res)
+         refetch();
+         toast.success("Winner is Declared!");
+         
+       }
+     });
       }
-      if (res) {
-        console.log(res)
-        refetch();
-        toast.success("Winner is Declared!");
-        
-      }
-    });
+    })
+
+
   };
 
   return (

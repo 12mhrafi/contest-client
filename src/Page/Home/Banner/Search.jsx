@@ -15,7 +15,7 @@ const Search = () => {
 
   return (
     <div className="md:w-[60%] px-4 text-center">
-      <h2 className="text-5xl text-gray-300 md:text-6xl font-bold">
+      <h2 className="md:text-5xl text-2xl text-gray-300  font-bold">
       "Skill Showdown: Where Champions Rise, and Challenges Thrive!"
       </h2>
       <p className="text-gray-200 mt-7">

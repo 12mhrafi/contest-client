@@ -4,6 +4,7 @@ import { Button } from "flowbite-react";
 import { Table } from "flowbite-react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 const ManageContest = () => {
   const [contests, refetch, isLoading] = useContest();
   const axiosSecure = useAxiosSecure();
@@ -17,11 +18,29 @@ const ManageContest = () => {
   };
 
   const handleDelete = (id) => {
-    axiosSecure.delete(`/contests/admin/${id}`).then((res) => {
-      toast.success("deleted");
-      refetch();
-      // console.log(res);
-    });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+        axiosSecure.delete(`/contests/admin/${id}`).then(() => {
+          toast.success("deleted");
+          refetch();
+          // console.log(res);
+        })
+      }
+    })
+
   };
 
   return (

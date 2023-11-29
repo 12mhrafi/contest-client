@@ -1,10 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLoaderData, useLocation } from "react-router-dom";
-import moment from "moment";
+import React, { useEffect, useId, useState } from "react";
+import {
+  Link,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+import toast from "react-hot-toast";
 import useWinner from "../../hooks/useWinner";
+import useSingleWInner from "../../hooks/useSingleWInner";
+import useUserId from "../../hooks/useUserId";
 const ContestDetail = () => {
   const location = useLocation();
+  console.log(location);
   const contestDetails = useLoaderData();
+  const navigate = useNavigate();
   const winners = useWinner();
   const {
     _id,
@@ -20,6 +29,13 @@ const ContestDetail = () => {
     status,
     taskSubmission,
   } = contestDetails;
+  const [ids, setIds] = useState("");
+  // DUPLICATE CHECK
+  const userId = useUserId();
+
+  useEffect(() => {
+    userId.map((i) => setIds(i._id));
+  }, []);
 
   // countdown timer
   const [days, setDays] = useState(0);
@@ -28,14 +44,14 @@ const ContestDetail = () => {
   const [secs, setSeconds] = useState(0);
 
   const deadline = contestDeadline;
-
   const getTime = () => {
     const time = Date.parse(deadline) - Date.now();
-
-    setDays(Math.floor(time / (1000 * 60 * 60 * 24)));
-    setHours(Math.floor((time / (1000 * 60 * 60)) % 24));
-    setMinutes(Math.floor((time / 1000 / 60) % 60));
-    setSeconds(Math.floor((time / 1000) % 60));
+    if (time > 0) {
+      setDays(Math.floor(time / (1000 * 60 * 60 * 24)));
+      setHours(Math.floor((time / (1000 * 60 * 60)) % 24));
+      setMinutes(Math.floor((time / 1000 / 60) % 60));
+      setSeconds(Math.floor((time / 1000) % 60));
+    }
   };
 
   useEffect(() => {
@@ -51,22 +67,22 @@ const ContestDetail = () => {
         <div className="order-2 md:order-1 mt-5 md:mt-0">
           <img src={image} alt="" />
           <div className="mt-4 ">
-           <h2 className="text-3xl mb-3 font-semibold"> Details:</h2>
+            <h2 className="text-3xl mb-3 font-semibold"> Details:</h2>
             {description}
           </div>
           <div>
-           <h2 className="text-3xl mb-3 font-semibold mt-4"> Recent Winners</h2>
-           <div>
-                <h2>Winners : {winners.length}</h2>
-
-           </div>
+            <h2 className="text-3xl mb-3 font-semibold mt-4">
+              {" "}
+              Recent Winners
+            </h2>
+            <div>
+              <h2>Winners : {winners.length}</h2>
+            </div>
           </div>
         </div>
-  
+
         <div className="flex mt-5 order-1 md:order-2 md:mt-0 flex-col gap-5">
-          <h2 className="text-2xl font-semibold">
-           {contestName}
-          </h2>
+          <h2 className="text-2xl font-semibold">{contestName}</h2>
           <hr />
           <div>
             <p className="text-4xl mb-2 font-semibold">${priceMoney}</p>
@@ -113,9 +129,16 @@ const ContestDetail = () => {
             <span> Closes at {contestDeadline}</span>
           </div>
           <div>
-            <Link state={location.pathname} to={`/payment/${_id}`}>
-              <button className="btn-all w-full py-2"> Join Now </button>
-            </Link>
+            {secs === 0 ? (
+              <div>
+                {" "}
+                <button className="btn-all w-full py-2"> Time over </button>
+              </div>
+            ) : (
+              <Link state={location.pathname} to={`/payment/${_id}`}>
+                <button className="btn-all w-full py-2"> Join Now </button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

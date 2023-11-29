@@ -37,8 +37,11 @@ const ContestUpdate = () => {
     taskSubmission,
     contestDeadline,
     email,
+  
   } = singleContest;
 
+
+ const approve = status;
  
 
   // formik hook
@@ -72,9 +75,7 @@ const ContestUpdate = () => {
         contestDeadline: data.contestDeadline,
       };
       // console.log(updateData)
-      if(status === "approved"){
-        return toast.error("you can't delete approved contest")
-      }
+   
       axiosSecure.put(`/updateContest/${_id}`,updateData)
       .then(r => {
         if(r.data.modifiedCount > 0){

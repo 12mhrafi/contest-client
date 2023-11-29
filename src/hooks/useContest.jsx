@@ -13,6 +13,7 @@ const useContest = () => {
             return  res.data
         }
     })
+    
   return [contests,refetch,isLoading];
 }
 

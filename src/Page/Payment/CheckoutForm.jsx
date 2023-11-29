@@ -6,6 +6,8 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 
+
+
 const CheckoutForm = ({ contestInfo }) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -28,6 +30,9 @@ const CheckoutForm = ({ contestInfo }) => {
     taskSubmission,
   } = contestInfo;
 
+  // console.log(_id);
+
+  
   const stripe = useStripe();
   const elements = useElements();
   const axiosSecure = useAxiosSecure();
@@ -88,13 +93,14 @@ const CheckoutForm = ({ contestInfo }) => {
 
         // save payment to the database
         const paymentInfo = {
+          id: _id,
           contestDeadline,
           contestName,
           contestPrice,
           contestTypes,
           description,
           email: user?.email,
-          photo:user?.photoURL,
+          photo: user?.photoURL,
           image,
           participants,
           priceMoney,
@@ -102,6 +108,7 @@ const CheckoutForm = ({ contestInfo }) => {
           name: user?.displayName,
           taskSubmission,
         };
+
         console.log("after payment", paymentInfo);
 
         const res = await axiosSecure.post("/contest/payment", paymentInfo);
@@ -121,9 +128,13 @@ const CheckoutForm = ({ contestInfo }) => {
 
   return (
     <div className="s-top">
-      <form action="" onSubmit={handleSubmit}>
+      <h2 className="mb-5 text-2xl font-semibold text-center">Card Info</h2>
+      <form className="bg-gray-200 p-5 md:w-[50%] mx-auto w-full" action="" onSubmit={handleSubmit}>
+        
         <CardElement
+          className="bg-white p-4"
           options={{
+            
             style: {
               base: {
                 fontSize: "16px",
@@ -138,7 +149,11 @@ const CheckoutForm = ({ contestInfo }) => {
             },
           }}
         />
-        <button className="btn-all px-10 mt-10 py-2" type="submit" disabled={!stripe || !clientSecret}>
+        <button
+          className="btn-all px-10 mt-10 py-2"
+          type="submit"
+          disabled={!stripe || !clientSecret}
+        >
           Pay now
         </button>
       </form>

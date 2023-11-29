@@ -12,7 +12,7 @@ const UserProfile = () => {
     queryKey: ["registeredData"],
     queryFn: async () => {
       const result = await axiosSecure.get(
-        `https://contest-server.vercel.app/payment?email=${user?.email}`
+        `http://localhost:5000/payment?email=${user?.email}`
       );
 
       return result?.data;

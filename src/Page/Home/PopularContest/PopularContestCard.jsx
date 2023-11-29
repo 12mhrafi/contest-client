@@ -5,7 +5,6 @@ const PopularContestCard = ({contest}) => {
   
   const {_id,contestName,image,shortDescription,attemptedCount} = contest;
   
-  
     return (
     <div>
           <img src={image} alt="" />

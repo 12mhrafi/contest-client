@@ -58,7 +58,7 @@ const Login = () => {
             <div className="mb-2 block">
               <Label htmlFor="email1" value="Your email" />
             </div>
-            <TextInput
+            <TextInput className="border-none outline-none"
               type="email"
               {...register("email", { required: true })}
               placeholder="name@gmail.com"
