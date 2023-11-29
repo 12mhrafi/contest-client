@@ -15,7 +15,7 @@ const RegisteredContest = () => {
     queryKey: ["registeredData"],
     queryFn: async () => {
       const result = await axiosSecure.get(
-        `http://localhost:5000/payment?email=${user?.email}`
+        `https://contest-server.vercel.app/payment?email=${user?.email}`
       );
 
       return result?.data;

@@ -10,7 +10,7 @@ const ContestSubmitted = () => {
     queryKey: ["registeredData"],
     queryFn: async () => {
       const result = await axiosSecure.get(
-        "http://localhost:5000/registerdContests"
+        "https://contest-server.vercel.app/registerdContests"
       );
 
       return result?.data;
