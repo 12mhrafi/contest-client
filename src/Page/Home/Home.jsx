@@ -11,6 +11,7 @@ const Home = () => {
         <PopularContest></PopularContest>
         <Winners></Winners>
         <Join></Join>
+  
     </div>
   )
 }

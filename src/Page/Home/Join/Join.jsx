@@ -5,6 +5,8 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import joinImg from "../../../../src/assets/images/battle.webp";
 const Join = () => {
   return (
+    <div>
+
     <div className="bg-gray-200  md:px-20 py-16 md:py-20 mt-24 container mx-auto">
       <div className="grid justify-center items-center md:grid-cols-2 grid-cols-1">
         <div className="p-8">
@@ -50,6 +52,11 @@ const Join = () => {
           <img className="h-[300px] " src={joinImg} alt="" />
         </div>
       </div>
+      <div>
+        
+      </div>
+    </div>
+
     </div>
   );
 };

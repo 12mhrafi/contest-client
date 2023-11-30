@@ -1,6 +1,5 @@
 import React from "react";
-import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
-import bannerImg from "../../../../src/assets/images/banner.jpg";
+import bannerImg from "../../../../src/assets/images/banner.jfif";
 import Search from "./Search";
 const Banner = () => {
   return (

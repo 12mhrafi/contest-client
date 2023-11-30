@@ -44,8 +44,8 @@ const ManageContest = () => {
   };
 
   return (
-    <div className="s-top">
-      {contests.length}
+    <div>
+
       <div className="overflow-x-auto">
         <Table>
           <Table.Head>

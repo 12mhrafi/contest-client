@@ -37,6 +37,16 @@ const AllContest = () => {
           name="my_tabs_1"
           role=""
           className="tab mr-4"
+          aria-label="Article"
+        />
+        <div role="" className="tab-content">
+          <AllContestCategory items={article}></AllContestCategory>
+        </div>
+        <input
+          type="radio"
+          name="my_tabs_1"
+          role=""
+          className="tab mr-4"
           aria-label="Medical"
           checked
         />
@@ -66,19 +76,7 @@ const AllContest = () => {
         <div role="tabpanel" className="tab-content">
           <AllContestCategory items={business}></AllContestCategory>
         </div>
-
-        <input
-          type="radio"
-          name="my_tabs_1"
-          role=""
-          className="tab"
-          aria-label="Article"
-        />
-        <div role="" className="tab-content">
-          <AllContestCategory items={article}></AllContestCategory>
-        </div>
       </div>
-   
     </div>
   );
 };

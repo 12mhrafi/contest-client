@@ -22,7 +22,7 @@ const AllContestCategory = ({ items }) => {
         <div key={item._id}>
           <div className="bg-gray-100">
             <div>
-              <img src={item.image} alt="" />
+              <img className="w-full object-cover h-[250px]" src={item.image} alt="" />
             </div>
             <div className="flex mt-6 p-4 flex-col gap-2">
               <h2 className="text-2xl font-semibold">{item.contestName}</h2>

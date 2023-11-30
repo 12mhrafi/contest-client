@@ -53,9 +53,9 @@ const ManageUser = () => {
     }
 
   return (
-    <div>ManageUser: {users.length}
+    <div>
     
-    <div className=" s-top overflow-x-auto">
+    <div className=" overflow-x-auto">
       <Table>
         <Table.Head>
           <Table.HeadCell>No</Table.HeadCell>
