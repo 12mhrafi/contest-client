@@ -30,7 +30,8 @@ Here are core features of this website -
 - Contest creator also can declare win to the most qualified contestant etc.
 
 
-- Front-end Live Site Link: https://6568c49bc8ee2003dac06167--sunny-marzipan-c573d0.  netlify.app/
+
+- Front-end Live Site Link: https://6568c49bc8ee2003dac06167--sunny-marzipan-c573d0.netlify.app/
 
 
 
