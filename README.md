@@ -9,7 +9,7 @@ Technologies-
 - CSS
 - HTML
 
-Database-
+Database and hosting-
 - MongoDB 
 - Firebase
 - Netlify
