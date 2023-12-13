@@ -2,7 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const AllContestCategory = ({ items }) => {
-
+  // const {
+  //   contestDeadline,
+  //   contestName,
+  //   contestPrice,
+  //   contestTypes,
+  //   description,
+  //   email,
+  //   image,
+  //   participants,
+  //   priceMoney,
+  //   status,
+  //   taskSubmission,
+  // } = contestInfo;
 
   return (
     <div className=" gap-4 mt-10 grid  md:grid-cols-2 lg:grid-cols-3">
